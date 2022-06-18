@@ -1,16 +1,46 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>index</title>
-    <link rel="stylesheet" href="./scss/index.scss">
-  </head>
 
-<body>
-<h1>title</h1>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>index</title>
+  <link rel="stylesheet" href="./scss/index.scss">
+</head>
+
+<body class="body">
+  <main class="main">
+    <div class="contentWrapper">
+      <div class="headingWrapper">
+        <h2 class="headingText">飲食店を提案します！</h2>
+        <p>条件を選んでください</p>
+      </div>
+      <form method="get">
+        <div class="buttonWrapper">
+          <button class="buttonLeft">
+            本丸から5分以内
+          </button>
+          <button class="buttonRight">
+            本丸から10分以内
+          </button>
+        </div>
+        <div class="buttonWrapper">
+          <button class="buttonLeft">
+            喫煙席含む
+          </button>
+          <button class="buttonRight">
+            禁煙席のみ
+          </button>
+        </div>
+        <div class="search">
+          <button type="submit" class="searchButton">検索する</button>
+        </div>
+      </form>
+    </div>
+    <footer></footer>
+  </main>
+
   <script type="module" src="js/index.js"></script>
 </body>
 
