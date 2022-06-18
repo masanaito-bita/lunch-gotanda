@@ -1,0 +1,37 @@
+{
+  "name": "lunch_gotanda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html --open --no-autoinstall",
+    "lint:js": "eslint src/js --ext .jsx --ext .vue --ext .js --ext .ts --ext .tsx",
+    "lint:js:fix": "eslint --fix src/js --ext .jsx --ext .vue --ext .js --ext .ts --ext .tsx",
+    "lint:scss": "stylelint \"src/**/*.scss\"",
+    "lint:scss:fix": "stylelint --fix \"src/**/*.scss\"",
+    "lint": "npm run lint:js && npm run lint:scss",
+    "lint:fix": "npm run lint:js:fix && npm run lint:scss:fix",
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masanaito-bita/lunch-gotanda.git"
+  },
+  "author": "masana ito",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/masanaito-bita/lunch-gotanda/issues"
+  },
+  "homepage": "https://github.com/masanaito-bita/lunch-gotanda#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "parcel-bundler": "^1.12.5",
+    "stylelint": "^14.9.1",
+    "stylelint-config-standard": "^26.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "eslint": "^8.18.0",
+    "node-sass": "^7.0.1"
+  }
+}
