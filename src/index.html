@@ -17,25 +17,25 @@
         <h2 class="headingText">飲食店を提案します！</h2>
         <p>条件を選んでください</p>
       </div>
-      <form method="get">
+      <form action="" method="get" name="form">
         <div class="buttonWrapper">
-          <button class="buttonLeft">
+          <button name="distance_5" class="buttonLeft">
             本丸から5分以内
           </button>
-          <button class="buttonRight">
+          <button name="distance_10" class="buttonRight">
             本丸から10分以内
           </button>
         </div>
         <div class="buttonWrapper">
-          <button class="buttonLeft">
+          <button name="smoking" class="buttonLeft">
             喫煙席含む
           </button>
-          <button class="buttonRight">
+          <button name="non_smoking" class="buttonRight">
             禁煙席のみ
           </button>
         </div>
         <div class="search">
-          <button type="submit" class="searchButton">検索する</button>
+          <button type="search" name="search" class="searchButton js-search">検索する</button>
         </div>
       </form>
     </div>
