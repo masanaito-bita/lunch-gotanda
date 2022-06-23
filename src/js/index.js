@@ -25,6 +25,7 @@ const app = document.querySelector('.app');
  */
 const fetchShopInfo = () => {
 
+  console.log("read fetchShopInfo");
   // // 距離パラメータ
   // const selectRange = document.form.range;
   // const rangeNum = selectRange.selectIndex;
@@ -35,7 +36,6 @@ const fetchShopInfo = () => {
   // const smokingNum = selectRange.selectIndex;
   // const NON_SMOKING = `non_smoking=${smokingNum}`;
 
-  console.log('reading fetchShopInfo!!!')
   // fetch(`${URL}&${RANGE}&${NON_SMOKING}`).then(async function (response) {
   fetch(URL).then(async function (response) {
     if (!response.ok) {
@@ -47,60 +47,62 @@ const fetchShopInfo = () => {
       const view = escapeHTML`
       <header class="header">
         <div class="header__text">
-          ここに行きませんか？
+          <p>ここに行きませんか？</p>
         </div>
       </header>
       <main class="main">
         <div class="shopInfoWrapper">
           <div class="shopInfo">
             <div class="shopInfo__heading">
-              <p class="shopGenreName">${shop.genre.catch}</p>
+              <p class="shopGenreCatch">${shop.genre.catch}</p>
               <p class="shopName">${shop.name}</p>
               <p class="shopGenreName">${shop.genre.name}</p>
               <p class="shopInfo__shopImage">
-                <img src="${shop.logo_image}" alt="${shop.name}">
+                <img src="${shop.logo_image}" alt="${shop.name}" width="200" height="200">
               </p>
               <p class="creditImage">【画像提供:ホットペッパー グルメ】</p>
             </div>
             <div class="shopInfo__detail">
               <table class="table">
                 <tr>
-                  <th class="table__title">【営業時間】</th>
+                  <th class="table__head">【営業時間】</th>
                 </tr>
                 <tr>
-                  <td class="table__body">${shop.open}</td>
+                  <td class="table__data">${shop.open}</td>
                 </tr>
                 <tr>
-                  <th class="table__title">【平均予算】</th>
+                  <th class="table__head">【平均予算】</th>
                 </tr>
                 <tr>
-                  <td class="table__body">${shop.budget.average}</td>
+                  <td class="table__data">${shop.budget.average}</td>
                 </tr>
               </table>
-              <a href=${detailLink}>詳細を見る</a>
+              <a href=${detailLink} class="link detailLink">詳細を見る</a>
               <div class="googleMap">
                 <p>${shop.lat}</p>
                 <p>${shop.lng}</p>
               </div>
               <table class="table">
                 <tr>
-                  <th class="table__title">【住所】</th>
+                  <th class="table__head">【住所】</th>
                 </tr>
                 <tr>
-                  <td class="table__body">${shop.address}</td>
+                  <td class="table__data">${shop.address}</td>
                 </tr>
               </table>
             </div>
           </div>
-          <button class="searchButton">
-            別の店を探す
-          </button>
-          <a href="/">トップページに戻る</a>
+          <p class="searchButtonParent">
+            <button class="searchButton">
+              別の店を探す
+            </button>
+          </p>
+          <a href="/" class="link">トップページに戻る</a>
         </div>
       </main>
-      <footer>
-        <p>Powered by <a href="http://webservice.recruit.co.jp/">ホットペッパー Webサービス</a></p>
-        <p>©︎bitA Inc. 2022</p>
+      <footer class="footer">
+        <p class="footer__hotpepper">Powered by <a class="creditLink" href="http://webservice.recruit.co.jp/">ホットペッパー Webサービス</a></p>
+        <p class="footer__credit">©bitA Inc. 2022</p>
       </footer>
       `;
       // HTMLの挿入
@@ -116,9 +118,18 @@ const fetchShopInfo = () => {
  * トップページを表示する
  */
 const renderTop = () => {
-  console.log('reading renderTop!!!')
   const view = escapeHTML`
-    <button class="searchButton">検索する</button>
+  <form name="form" method="get">
+  <select name="range">
+    <option value="1">5分</option>
+    <option value="2">10分</option>
+  </select>
+  <select name="non_smoking">
+    <option value="0">喫煙席含む</option>
+    <option value="1">禁煙席のみ</option>
+  </select>
+  <button class="searchButton">検索する</button>
+</form>
   `;
   app.innerHTML = view;
   const searchButton = document.querySelector('.searchButton');
@@ -126,7 +137,7 @@ const renderTop = () => {
 }
 
 
-{/* <form name="form">
+{/* <form name="form" method="get" action="">
   <select name="range">
     <option value="1">5分</option>
     <option value="2">10分</option>
@@ -171,4 +182,5 @@ function escapeHTML(strings, ...values) {
   });
 }
 
-renderTop();
+// renderTop();
+fetchShopInfo();
