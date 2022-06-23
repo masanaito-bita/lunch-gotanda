@@ -1,3 +1,6 @@
+import { escapeHTML } from "./escapeHTML";
+import { renderTop } from "./renderTop";
+
 const API_KEY = '244f51358beb91f3';
 const AREA_GOTANDA = 'small_area=X086'
 const FORMAT = 'format=json';
@@ -13,17 +16,14 @@ const URL = `${proxyserver}http://webservice.recruit.co.jp/hotpepper/gourmet/v1/
  * @param {int} num
  * @returns
  */
-const randomNumber = (num) => {
+ const randomNumber = (num) => {
   return Math.floor(Math.random() * num + 1);
 }
-
-const app = document.querySelector('.app');
-
 
 /**
  * 飲食店情報を返す
  */
-const fetchShopInfo = () => {
+ export const fetchShopInfo = (element) => {
 
   console.log("read fetchShopInfo");
   // // 距離パラメータ
@@ -33,16 +33,16 @@ const fetchShopInfo = () => {
 
   // // 禁煙席パラメータ
   // const selectSmoking = document.form.non_smoking;
-  // const smokingNum = selectRange.selectIndex;
+  // const smokingNum = selectSmoking.selectIndex;
   // const NON_SMOKING = `non_smoking=${smokingNum}`;
 
   // fetch(`${URL}&${RANGE}&${NON_SMOKING}`).then(async function (response) {
-  fetch(URL).then(function (response) {
+  fetch(URL).then(async function (response) {
     if (!response.ok) {
       console.error("エラーレスポンス", response);
     } else {
-      console.log("read fetchShopInfo");
-      const dataJson = response.json();
+      console.log("わあああああああああ");
+      const dataJson = await response.json();
       const shop = dataJson.results.shop[randomNumber(COUNT)];
       const detailLink = `https://www.hotpepper.jp/str${shop.id}/`;
       const view = escapeHTML`
@@ -94,11 +94,8 @@ const fetchShopInfo = () => {
             </div>
           </div>
           <p class="searchButtonParent">
-            <button class="searchButton">
-              別の店を探す
-            </button>
           </p>
-          <a href="/" class="link">トップページに戻る</a>
+          <a href="/" class="link js-top">トップページに戻る</a>
         </div>
       </main>
       <footer class="footer">
@@ -107,83 +104,14 @@ const fetchShopInfo = () => {
       </footer>
       `;
       // HTMLの挿入
+      // const app = document.querySelector('.app');
+      element.innerHTML = view;
+      // element.insertAdjacentHTML('afterbegin', view);
 
-      app.insertAdjacentHTML('afterbegin', view);
-      // app.innerHTML = view;
-      const searchButton = document.querySelector('.searchButton');
-      searchButton.addEventListener('click', fetchShopInfo);
+      // const searchButton = document.querySelector('.js-search');
+      // searchButton.addEventListener('click', () => { fetchShopInfo(element) } );
+      const topLink = document.querySelector('.js-top');
+      topLink.addEventListener('click', () => { renderTop(element) });
     }
   });
 }
-
-
-/**
- * トップページを表示する
- */
-const renderTop = () => {
-  const view = escapeHTML`
-  <form name="form" method="get">
-  <select name="range">
-    <option value="1">5分</option>
-    <option value="2">10分</option>
-  </select>
-  <select name="non_smoking">
-    <option value="0">喫煙席含む</option>
-    <option value="1">禁煙席のみ</option>
-  </select>
-  <button class="searchButton">検索する</button>
-</form>
-  `;
-  app.innerHTML = view;
-  const searchButton = document.querySelector('.searchButton');
-  searchButton.addEventListener('click', fetchShopInfo);
-}
-
-
-{/* <form name="form" method="get" action="">
-  <select name="range">
-    <option value="1">5分</option>
-    <option value="2">10分</option>
-  </select>
-  <select name="non_smoking">
-    <option value="0">喫煙席含む</option>
-    <option value="1">禁煙席のみ</option>
-  </select>
-  <button class="searchButton">検索する</button>
-</form> */}
-
-
-/**
- * HTML文字列をエスケープする
- * @param {string} str
- * @returns 変換された特定の記号
- */
-function escapeSpecialChars(str) {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
-
-
-/**
- * escapeSpecialChars関数をHTML文字列の中で呼び出す タグ関数
- * @param {Array} strings
- * @param  {...any} values
- * @returns
- */
-function escapeHTML(strings, ...values) {
-  return strings.reduce((result, str, i) => {
-    const value = values[i - 1];
-    if (typeof value === 'string') {
-      return result + escapeSpecialChars(value) + str;
-    } else {
-      return result + String(value) + str;
-    }
-  });
-}
-
-renderTop();
-// fetchShopInfo();
