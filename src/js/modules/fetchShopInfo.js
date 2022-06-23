@@ -24,8 +24,6 @@ const randomNumber = (num) => {
  * 飲食店情報を返す
  */
 export const fetchShopInfo = (element) => {
-
-  console.log("read fetchShopInfo");
   // // 距離パラメータ
   // const selectRange = document.form.range;
   // const rangeNum = selectRange.selectIndex;
@@ -41,7 +39,6 @@ export const fetchShopInfo = (element) => {
     if (!response.ok) {
       console.error("エラーレスポンス", response);
     } else {
-      console.log("わあああああああああ");
       const dataJson = await response.json();
       const shop = dataJson.results.shop[randomNumber(COUNT)];
       const detailLink = `https://www.hotpepper.jp/str${shop.id}/`;
@@ -108,8 +105,6 @@ export const fetchShopInfo = (element) => {
       element.innerHTML = view;
       const searchButton = document.querySelector('.js-search');
       searchButton.addEventListener('click', () => { fetchShopInfo(element) });
-      const topLink = document.querySelector('.js-top');
-      topLink.addEventListener('click', () => { renderTop(element) });
     }
   });
 }

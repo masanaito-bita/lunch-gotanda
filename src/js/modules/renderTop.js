@@ -5,7 +5,6 @@ import { fetchShopInfo } from "./fetchShopInfo";
  * トップページを表示する
  */
 export const renderTop = (element) => {
-  console.log("reading renderTop");
   const view = escapeHTML`
   <form name="form" method="get" action="">
     <select name="range">
@@ -16,7 +15,7 @@ export const renderTop = (element) => {
       <option value="0">喫煙席含む</option>
       <option value="1">禁煙席のみ</option>
     </select>
-    <button class="searchButton js-search">検索する</button>
+    <button type="button" class="searchButton js-search">検索する</button>
   </form>
   `;
   element.innerHTML = view;
