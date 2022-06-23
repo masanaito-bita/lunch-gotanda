@@ -91,17 +91,19 @@ const URL = `${proxyserver}http://webservice.recruit.co.jp/hotpepper/gourmet/v1/
               </table>
             </div>
           </div>
-          <p class="searchButtonParent">
-          </p>
-          <a href="/" class="link js-top">トップページに戻る</a>
+      `;
+      element.innerHTML = view;
+      const viewAfter = escapeHTML`
+        <a href="/" class="link js-top">トップページに戻る</a>
         </div>
       </main>
       <footer class="footer">
         <p class="footer__hotpepper">Powered by <a class="creditLink" href="http://webservice.recruit.co.jp/">ホットペッパー Webサービス</a></p>
         <p class="footer__credit">©bitA Inc. 2022</p>
       </footer>
-      `;
-      element.innerHTML = view;
+      `
+      const appAfter = document.querySelector('.appAfter');
+      appAfter.innerHTML = viewAfter;
       const topLink = document.querySelector('.js-top');
       topLink.addEventListener('click', () => { renderTop(element) });
     }
