@@ -1,11 +1,9 @@
 import { escapeHTML } from "./escapeHTML";
-import { fetchShopInfo } from "./fetchShopInfo";
 
 /**
  * トップページを表示する
  */
 export const renderTop = (element) => {
-  console.log("reading renderTop");
   const view = escapeHTML`
   <form name="form" method="get" action="">
     <select name="range">
@@ -18,8 +16,5 @@ export const renderTop = (element) => {
     </select>
   </form>
   `;
-  // element.insertAdjacentHTML('afterbegin', view);
   element.innerHTML = view;
-  // const searchButton = document.querySelector('.searchButton');
-  // searchButton.addEventListener('click', () => { fetchShopInfo(element) });
 }

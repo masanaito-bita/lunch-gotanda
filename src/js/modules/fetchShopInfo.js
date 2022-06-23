@@ -25,7 +25,6 @@ const URL = `${proxyserver}http://webservice.recruit.co.jp/hotpepper/gourmet/v1/
  */
  export const fetchShopInfo = (element) => {
 
-  console.log("read fetchShopInfo");
   // // 距離パラメータ
   // const selectRange = document.form.range;
   // const rangeNum = selectRange.selectIndex;
@@ -41,7 +40,6 @@ const URL = `${proxyserver}http://webservice.recruit.co.jp/hotpepper/gourmet/v1/
     if (!response.ok) {
       console.error("エラーレスポンス", response);
     } else {
-      console.log("わあああああああああ");
       const dataJson = await response.json();
       const shop = dataJson.results.shop[randomNumber(COUNT)];
       const detailLink = `https://www.hotpepper.jp/str${shop.id}/`;
@@ -103,13 +101,7 @@ const URL = `${proxyserver}http://webservice.recruit.co.jp/hotpepper/gourmet/v1/
         <p class="footer__credit">©bitA Inc. 2022</p>
       </footer>
       `;
-      // HTMLの挿入
-      // const app = document.querySelector('.app');
       element.innerHTML = view;
-      // element.insertAdjacentHTML('afterbegin', view);
-
-      // const searchButton = document.querySelector('.js-search');
-      // searchButton.addEventListener('click', () => { fetchShopInfo(element) } );
       const topLink = document.querySelector('.js-top');
       topLink.addEventListener('click', () => { renderTop(element) });
     }
