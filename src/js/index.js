@@ -14,7 +14,7 @@ const URL = `${proxyserver}http://webservice.recruit.co.jp/hotpepper/gourmet/v1/
  * @returns
  */
 const randomNumber = (num) => {
-  return Math.floor( Math.random() * num + 1 );
+  return Math.floor(Math.random() * num + 1);
 }
 
 const app = document.querySelector('.app');
@@ -43,20 +43,65 @@ const fetchShopInfo = () => {
     } else {
       const dataJson = await response.json();
       const shop = dataJson.results.shop[randomNumber(COUNT)];
+      const detailLink = `https://www.hotpepper.jp/str${shop.id}/`;
       const view = escapeHTML`
-      <p>${shop.id}</p>
-      <p class='shopGenreCatch'>${shop.genre.catch}</p>
-      <h2>${shop.name}</h2>
-      <p>${shop.genre.name}</p>
-      <img src='${shop.logo_image}'></img>
-      <p>${shop.open}</p>
-      <p>${shop.budget.average}</p>
-      <p>${shop.lat}</p>
-      <p>${shop.lng}</p>
-      <p>${shop.address}</p>
-      <button class="searchButton">再検索</button>
-      <a href="/">トップページへ戻る</a>
-      <p>${shop.non_smoking}</p>
+      <header class="header">
+        <div class="header__text">
+          ここに行きませんか？
+        </div>
+      </header>
+      <main class="main">
+        <div class="shopInfoWrapper">
+          <div class="shopInfo">
+            <div class="shopInfo__heading">
+              <p class="shopGenreName">${shop.genre.catch}</p>
+              <p class="shopName">${shop.name}</p>
+              <p class="shopGenreName">${shop.genre.name}</p>
+              <p class="shopInfo__shopImage">
+                <img src="${shop.logo_image}" alt="${shop.name}">
+              </p>
+              <p class="creditImage">【画像提供:ホットペッパー グルメ】</p>
+            </div>
+            <div class="shopInfo__detail">
+              <table class="table">
+                <tr>
+                  <th class="table__title">【営業時間】</th>
+                </tr>
+                <tr>
+                  <td class="table__body">${shop.open}</td>
+                </tr>
+                <tr>
+                  <th class="table__title">【平均予算】</th>
+                </tr>
+                <tr>
+                  <td class="table__body">${shop.budget.average}</td>
+                </tr>
+              </table>
+              <a href=${detailLink}>詳細を見る</a>
+              <div class="googleMap">
+                <p>${shop.lat}</p>
+                <p>${shop.lng}</p>
+              </div>
+              <table class="table">
+                <tr>
+                  <th class="table__title">【住所】</th>
+                </tr>
+                <tr>
+                  <td class="table__body">${shop.address}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <button class="searchButton">
+            別の店を探す
+          </button>
+          <a href="/">トップページに戻る</a>
+        </div>
+      </main>
+      <footer>
+        <p>Powered by <a href="http://webservice.recruit.co.jp/">ホットペッパー Webサービス</a></p>
+        <p>©︎bitA Inc. 2022</p>
+      </footer>
       `;
       // HTMLの挿入
       app.innerHTML = view;
