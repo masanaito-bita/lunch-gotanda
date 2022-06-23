@@ -16,10 +16,10 @@ export const renderTop = (element) => {
       <option value="0">喫煙席含む</option>
       <option value="1">禁煙席のみ</option>
     </select>
+    <button class="searchButton js-search">検索する</button>
   </form>
   `;
-  // element.insertAdjacentHTML('afterbegin', view);
   element.innerHTML = view;
-  // const searchButton = document.querySelector('.searchButton');
-  // searchButton.addEventListener('click', () => { fetchShopInfo(element) });
+  const searchButton = document.querySelector('.js-search');
+  searchButton.addEventListener('click', () => { fetchShopInfo(element) });
 }

@@ -16,14 +16,14 @@ const URL = `${proxyserver}http://webservice.recruit.co.jp/hotpepper/gourmet/v1/
  * @param {int} num
  * @returns
  */
- const randomNumber = (num) => {
+const randomNumber = (num) => {
   return Math.floor(Math.random() * num + 1);
 }
 
 /**
  * 飲食店情報を返す
  */
- export const fetchShopInfo = (element) => {
+export const fetchShopInfo = (element) => {
 
   console.log("read fetchShopInfo");
   // // 距離パラメータ
@@ -94,6 +94,7 @@ const URL = `${proxyserver}http://webservice.recruit.co.jp/hotpepper/gourmet/v1/
             </div>
           </div>
           <p class="searchButtonParent">
+            <button class="searchButton js-search">再検索する</button>
           </p>
           <a href="/" class="link js-top">トップページに戻る</a>
         </div>
@@ -104,12 +105,9 @@ const URL = `${proxyserver}http://webservice.recruit.co.jp/hotpepper/gourmet/v1/
       </footer>
       `;
       // HTMLの挿入
-      // const app = document.querySelector('.app');
       element.innerHTML = view;
-      // element.insertAdjacentHTML('afterbegin', view);
-
-      // const searchButton = document.querySelector('.js-search');
-      // searchButton.addEventListener('click', () => { fetchShopInfo(element) } );
+      const searchButton = document.querySelector('.js-search');
+      searchButton.addEventListener('click', () => { fetchShopInfo(element) });
       const topLink = document.querySelector('.js-top');
       topLink.addEventListener('click', () => { renderTop(element) });
     }
