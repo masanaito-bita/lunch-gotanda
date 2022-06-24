@@ -24,16 +24,13 @@ const randomNumber = (num) => {
 /**
  * 飲食店情報を返す
  */
-export const fetchShopInfo = (element) => {
+export const fetchShopInfo = (element, rangeValue, smokingValue) => {
   // 距離パラメータ
-  const rangeValue = document.querySelector(".js-selectRange").value;
   const RANGE = `range=${rangeValue}`;
-  console.log(RANGE);
-
-  // 禁煙席パラメータ
-  const smokingValue = document.querySelector(".js-selectSmoking").value;
   const SMOKING = `non_smoking=${smokingValue}`;
-  console.log(SMOKING);
+
+  console.log(rangeValue);
+  console.log(smokingValue);
 
   fetch(`${URL}&${RANGE}&${SMOKING}`).then(async function (response) {
   // fetch(URL).then(async function (response) {
@@ -48,7 +45,7 @@ export const fetchShopInfo = (element) => {
         shop.budget.average = "未設定です";
       }
 
-      const view = escapeHTML`
+      element.innerHTML = escapeHTML`
       <header class="header">
         <div class="header__text">
           <p>ここに行きませんか？</p>
@@ -117,10 +114,8 @@ export const fetchShopInfo = (element) => {
         <p class="footer__credit">©bitA Inc. 2022</p>
       </footer>
       `;
-      // HTMLの挿入
-      element.innerHTML = view;
       const searchButton = document.querySelector('.js-search');
-      searchButton.addEventListener('click', () => { fetchShopInfo(element) });
+      searchButton.addEventListener('click', () => { fetchShopInfo(element, rangeValue, smokingValue) });
       const topLink = document.querySelector('.js-top');
       topLink.addEventListener('click', () => { renderTop(element) });
     }

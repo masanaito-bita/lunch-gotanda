@@ -1,11 +1,11 @@
-import { escapeHTML } from "./escapeHTML";
-import { fetchShopInfo } from "./fetchShopInfo";
+import {escapeHTML} from "./escapeHTML";
+import {fetchShopInfo} from "./fetchShopInfo";
 
 /**
  * トップページを表示する
  */
 export const renderTop = (element) => {
-  const view = escapeHTML`
+  element.innerHTML = escapeHTML`
   <form name="form" method="get" action="">
     <select name="range" class="js-selectRange">
       <option value="1">5分</option>
@@ -18,7 +18,11 @@ export const renderTop = (element) => {
     <button type="button" class="searchButton js-search">検索する</button>
   </form>
   `;
-  element.innerHTML = view;
+
   const searchButton = document.querySelector('.js-search');
-  searchButton.addEventListener('click', () => { fetchShopInfo(element) });
+  searchButton.addEventListener('click', () => {
+    const rangeValue = document.querySelector(".js-selectRange").value;
+    const smokingValue = document.querySelector(".js-selectSmoking").value;
+    fetchShopInfo(element, rangeValue, smokingValue);
+  });
 }
