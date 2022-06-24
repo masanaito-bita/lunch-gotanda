@@ -7,11 +7,11 @@ import { fetchShopInfo } from "./fetchShopInfo";
 export const renderTop = (element) => {
   const view = escapeHTML`
   <form name="form" method="get" action="">
-    <select name="range">
+    <select name="range" class="js-selectRange">
       <option value="1">5分</option>
       <option value="2">10分</option>
     </select>
-    <select name="non_smoking">
+    <select name="smoking" class="js-selectSmoking">
       <option value="0">喫煙席含む</option>
       <option value="1">禁煙席のみ</option>
     </select>

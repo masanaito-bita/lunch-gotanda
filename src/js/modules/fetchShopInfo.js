@@ -20,21 +20,22 @@ const randomNumber = (num) => {
   return Math.floor(Math.random() * num + 1);
 }
 
+
 /**
  * 飲食店情報を返す
  */
 export const fetchShopInfo = (element) => {
   // // 距離パラメータ
-  // const selectRange = document.form.range;
-  // const rangeNum = selectRange.selectIndex;
-  // const RANGE = `range=${rangeNum}`;
+  // const rangeValue = document.querySelector(".js-selectRange").value;
+  // const RANGE = `range=${rangeValue}`;
+  // console.log(RANGE);
 
   // // 禁煙席パラメータ
-  // const selectSmoking = document.form.non_smoking;
-  // const smokingNum = selectSmoking.selectIndex;
-  // const NON_SMOKING = `non_smoking=${smokingNum}`;
+  // const smokingValue = document.querySelector(".js-selectSmoking").value;
+  // const SMOKING = `non_smoking=${smokingValue}`;
+  // console.log(SMOKING);
 
-  // fetch(`${URL}&${RANGE}&${NON_SMOKING}`).then(async function (response) {
+  // fetch(`${URL}&${RANGE}&${SMOKING}`).then(async function (response) {
   fetch(URL).then(async function (response) {
     if (!response.ok) {
       console.error("エラーレスポンス", response);
