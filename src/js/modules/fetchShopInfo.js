@@ -76,7 +76,9 @@ export const fetchShopInfo = (element) => {
                   <td class="table__data">${shop.budget.average}</td>
                 </tr>
               </table>
-              <a href=${detailLink} class="link detailLink">詳細を見る</a>
+              <div class="linkParent">
+                <a href=${detailLink} class="link">詳細を見る▶︎</a>
+              </div>
               <div class="googleMap">
                 <p>${shop.lat}</p>
                 <p>${shop.lng}</p>
@@ -94,7 +96,9 @@ export const fetchShopInfo = (element) => {
           <p class="searchButtonParent">
             <button class="searchButton js-search">再検索する</button>
           </p>
-          <a class="link js-top">トップページに戻る</a>
+          <div class="linkParent">
+            <a href="/" class="link js-top">トップページに戻る</a>
+          </div>
         </div>
       </main>
       <footer class="footer">
