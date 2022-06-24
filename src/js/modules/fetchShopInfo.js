@@ -94,7 +94,7 @@ export const fetchShopInfo = (element) => {
           <p class="searchButtonParent">
             <button class="searchButton js-search">再検索する</button>
           </p>
-          <a href="/" class="link js-top">トップページに戻る</a>
+          <a class="link js-top">トップページに戻る</a>
         </div>
       </main>
       <footer class="footer">
@@ -106,6 +106,8 @@ export const fetchShopInfo = (element) => {
       element.innerHTML = view;
       const searchButton = document.querySelector('.js-search');
       searchButton.addEventListener('click', () => { fetchShopInfo(element) });
+      const topLink = document.querySelector('.js-top');
+      topLink.addEventListener('click', () => { renderTop(element) });
     }
   });
 }

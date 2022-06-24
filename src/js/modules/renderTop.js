@@ -1,4 +1,5 @@
 import { escapeHTML } from "./escapeHTML";
+import { fetchShopInfo } from "./fetchShopInfo";
 
 /**
  * トップページを表示する
