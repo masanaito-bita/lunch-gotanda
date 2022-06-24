@@ -25,24 +25,29 @@ const randomNumber = (num) => {
  * 飲食店情報を返す
  */
 export const fetchShopInfo = (element) => {
-  // // 距離パラメータ
-  // const rangeValue = document.querySelector(".js-selectRange").value;
-  // const RANGE = `range=${rangeValue}`;
-  // console.log(RANGE);
+  // 距離パラメータ
+  const rangeValue = document.querySelector(".js-selectRange").value;
+  const RANGE = `range=${rangeValue}`;
+  console.log(RANGE);
 
-  // // 禁煙席パラメータ
-  // const smokingValue = document.querySelector(".js-selectSmoking").value;
-  // const SMOKING = `non_smoking=${smokingValue}`;
-  // console.log(SMOKING);
+  // 禁煙席パラメータ
+  const smokingValue = document.querySelector(".js-selectSmoking").value;
+  const SMOKING = `non_smoking=${smokingValue}`;
+  console.log(SMOKING);
 
-  // fetch(`${URL}&${RANGE}&${SMOKING}`).then(async function (response) {
-  fetch(URL).then(async function (response) {
+  fetch(`${URL}&${RANGE}&${SMOKING}`).then(async function (response) {
+  // fetch(URL).then(async function (response) {
     if (!response.ok) {
       console.error("エラーレスポンス", response);
     } else {
       const dataJson = await response.json();
       const shop = dataJson.results.shop[randomNumber(COUNT)];
       const detailLink = `https://www.hotpepper.jp/str${shop.id}/`;
+
+      if (!shop.budget.average) {
+        shop.budget.average = "未設定です";
+      }
+
       const view = escapeHTML`
       <header class="header">
         <div class="header__text">
@@ -81,7 +86,7 @@ export const fetchShopInfo = (element) => {
               </div>
               <div class="googleMap">
                 <iframe width="300" height="250"
-                  src="http://maps.google.co.jp/maps?output=embed&q=${shop.name}@${shop.address}&;
+                  src="http://maps.google.co.jp/maps?output=embed&q=${shop.address}&;
                   t=m&;z=20"
                   frameborder="0"
                   scrolling="no"
