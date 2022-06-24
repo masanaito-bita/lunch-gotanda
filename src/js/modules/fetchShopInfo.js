@@ -16,26 +16,26 @@ const URL = `${proxyserver}http://webservice.recruit.co.jp/hotpepper/gourmet/v1/
  * @param {int} num
  * @returns
  */
- const randomNumber = (num) => {
+const randomNumber = (num) => {
   return Math.floor(Math.random() * num + 1);
 }
+
 
 /**
  * 飲食店情報を返す
  */
- export const fetchShopInfo = (element) => {
-
+export const fetchShopInfo = (element) => {
   // // 距離パラメータ
-  // const selectRange = document.form.range;
-  // const rangeNum = selectRange.selectIndex;
-  // const RANGE = `range=${rangeNum}`;
+  // const rangeValue = document.querySelector(".js-selectRange").value;
+  // const RANGE = `range=${rangeValue}`;
+  // console.log(RANGE);
 
   // // 禁煙席パラメータ
-  // const selectSmoking = document.form.non_smoking;
-  // const smokingNum = selectSmoking.selectIndex;
-  // const NON_SMOKING = `non_smoking=${smokingNum}`;
+  // const smokingValue = document.querySelector(".js-selectSmoking").value;
+  // const SMOKING = `non_smoking=${smokingValue}`;
+  // console.log(SMOKING);
 
-  // fetch(`${URL}&${RANGE}&${NON_SMOKING}`).then(async function (response) {
+  // fetch(`${URL}&${RANGE}&${SMOKING}`).then(async function (response) {
   fetch(URL).then(async function (response) {
     if (!response.ok) {
       console.error("エラーレスポンス", response);
@@ -91,21 +91,21 @@ const URL = `${proxyserver}http://webservice.recruit.co.jp/hotpepper/gourmet/v1/
               </table>
             </div>
           </div>
-      `;
-      element.innerHTML = view;
-      const viewAfter = escapeHTML`
-        <a href="/" class="link js-top">トップページに戻る</a>
+          <p class="searchButtonParent">
+            <button class="searchButton js-search">再検索する</button>
+          </p>
+          <a href="/" class="link js-top">トップページに戻る</a>
         </div>
       </main>
       <footer class="footer">
         <p class="footer__hotpepper">Powered by <a class="creditLink" href="http://webservice.recruit.co.jp/">ホットペッパー Webサービス</a></p>
         <p class="footer__credit">©bitA Inc. 2022</p>
       </footer>
-      `
-      const appAfter = document.querySelector('.appAfter');
-      appAfter.innerHTML = viewAfter;
-      const topLink = document.querySelector('.js-top');
-      topLink.addEventListener('click', () => { renderTop(element) });
+      `;
+      // HTMLの挿入
+      element.innerHTML = view;
+      const searchButton = document.querySelector('.js-search');
+      searchButton.addEventListener('click', () => { fetchShopInfo(element) });
     }
   });
 }
