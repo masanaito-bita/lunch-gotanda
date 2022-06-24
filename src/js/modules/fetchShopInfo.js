@@ -80,8 +80,14 @@ export const fetchShopInfo = (element) => {
                 <a href=${detailLink} class="link">詳細を見る▶︎</a>
               </div>
               <div class="googleMap">
-                <p>${shop.lat}</p>
-                <p>${shop.lng}</p>
+                <iframe width="300" height="250"
+                  src="http://maps.google.co.jp/maps?output=embed&q=${shop.name}@${shop.address}&;
+                  t=m&;z=20"
+                  frameborder="0"
+                  scrolling="no"
+                  allowfullscreen
+                  >
+                </iframe>
               </div>
               <table class="table">
                 <tr>
