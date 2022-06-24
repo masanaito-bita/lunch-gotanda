@@ -16,32 +16,30 @@ const URL = `${proxyserver}http://webservice.recruit.co.jp/hotpepper/gourmet/v1/
  * @param {int} num
  * @returns
  */
- const randomNumber = (num) => {
+const randomNumber = (num) => {
   return Math.floor(Math.random() * num + 1);
 }
+
 
 /**
  * 飲食店情報を返す
  */
- export const fetchShopInfo = (element) => {
-
-  console.log("read fetchShopInfo");
+export const fetchShopInfo = (element) => {
   // // 距離パラメータ
-  // const selectRange = document.form.range;
-  // const rangeNum = selectRange.selectIndex;
-  // const RANGE = `range=${rangeNum}`;
+  // const rangeValue = document.querySelector(".js-selectRange").value;
+  // const RANGE = `range=${rangeValue}`;
+  // console.log(RANGE);
 
   // // 禁煙席パラメータ
-  // const selectSmoking = document.form.non_smoking;
-  // const smokingNum = selectSmoking.selectIndex;
-  // const NON_SMOKING = `non_smoking=${smokingNum}`;
+  // const smokingValue = document.querySelector(".js-selectSmoking").value;
+  // const SMOKING = `non_smoking=${smokingValue}`;
+  // console.log(SMOKING);
 
-  // fetch(`${URL}&${RANGE}&${NON_SMOKING}`).then(async function (response) {
+  // fetch(`${URL}&${RANGE}&${SMOKING}`).then(async function (response) {
   fetch(URL).then(async function (response) {
     if (!response.ok) {
       console.error("エラーレスポンス", response);
     } else {
-      console.log("わあああああああああ");
       const dataJson = await response.json();
       const shop = dataJson.results.shop[randomNumber(COUNT)];
       const detailLink = `https://www.hotpepper.jp/str${shop.id}/`;
@@ -94,6 +92,7 @@ const URL = `${proxyserver}http://webservice.recruit.co.jp/hotpepper/gourmet/v1/
             </div>
           </div>
           <p class="searchButtonParent">
+            <button class="searchButton js-search">再検索する</button>
           </p>
           <a href="/" class="link js-top">トップページに戻る</a>
         </div>
@@ -104,14 +103,9 @@ const URL = `${proxyserver}http://webservice.recruit.co.jp/hotpepper/gourmet/v1/
       </footer>
       `;
       // HTMLの挿入
-      // const app = document.querySelector('.app');
       element.innerHTML = view;
-      // element.insertAdjacentHTML('afterbegin', view);
-
-      // const searchButton = document.querySelector('.js-search');
-      // searchButton.addEventListener('click', () => { fetchShopInfo(element) } );
-      const topLink = document.querySelector('.js-top');
-      topLink.addEventListener('click', () => { renderTop(element) });
+      const searchButton = document.querySelector('.js-search');
+      searchButton.addEventListener('click', () => { fetchShopInfo(element) });
     }
   });
 }
