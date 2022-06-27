@@ -83,7 +83,7 @@ export const fetchShopInfo = (element, rangeValue, smokingValue) => {
               </div>
               <div class="googleMap">
                 <iframe width="300" height="250"
-                  src="http://maps.google.co.jp/maps?output=embed&q=${shop.address}&;
+                  src="https://maps.google.co.jp/maps?output=embed&q=${shop.address}&;
                   t=m&;z=20"
                   frameborder="0"
                   scrolling="no"
