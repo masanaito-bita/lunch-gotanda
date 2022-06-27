@@ -1,5 +1,5 @@
-import { escapeHTML } from "./escapeHTML";
-import { renderTop } from "./renderTop";
+import { escapeHTML } from "./escapeHTML.js";
+import { renderTop } from "./renderTop.js";
 
 const API_KEY = '244f51358beb91f3';
 const AREA_GOTANDA = 'small_area=X086'
