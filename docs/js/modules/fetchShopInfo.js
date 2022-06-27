@@ -20,6 +20,13 @@ const randomNumber = (num) => {
   return Math.floor(Math.random() * num + 1);
 }
 
+/**
+ * ページ上部へスクロールする
+ */
+const scrollToTop = () => {
+  window.scroll({ top: 0, behavior: 'smooth' });
+}
+
 
 /**
  * 飲食店情報を返す
@@ -115,6 +122,7 @@ export const fetchShopInfo = (element, rangeValue, smokingValue) => {
       </footer>
       `;
       const searchButton = document.querySelector('.js-search');
+      searchButton.addEventListener('click', () => { scrollToTop() });
       searchButton.addEventListener('click', () => { fetchShopInfo(element, rangeValue, smokingValue) });
       const topLink = document.querySelector('.js-top');
       topLink.addEventListener('click', () => { renderTop(element) });
