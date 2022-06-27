@@ -2,7 +2,7 @@
   "name": "lunch_gotanda",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "docs/index.html",
   "scripts": {
     "start": "parcel docs/index.html --open --no-autoinstall",
     "lint:js": "eslint docs/js --ext .jsx --ext .vue --ext .js --ext .ts --ext .tsx",

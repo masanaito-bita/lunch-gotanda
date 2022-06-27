@@ -1,4 +1,4 @@
-import { renderTop } from "./modules/renderTop.js";
+import { renderTop } from "./modules/renderTop";
 
 const app = document.querySelector('.app');
 renderTop(app);

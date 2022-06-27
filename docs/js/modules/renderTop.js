@@ -1,6 +1,6 @@
-import { escapeHTML } from "./escapeHTML.js";
-import { fetchShopInfo } from "./fetchShopInfo.js";
-import { toggleChoices } from "./toggleChoices.js";
+import { escapeHTML } from "./escapeHTML";
+import { fetchShopInfo } from "./fetchShopInfo";
+import { toggleChoices } from "./toggleChoices";
 
 /**
  * トップページを表示する
