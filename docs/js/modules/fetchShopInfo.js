@@ -11,6 +11,7 @@ const proxyserver = 'https://cors-suzuki-app.herokuapp.com/';
 const URL = `${proxyserver}http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${API_KEY}&${FORMAT}&${AREA_GOTANDA}&${IS_LUNCH}&count=${COUNT}`;
 
 
+
 /**
  * ランダムの整数を返す
  * @param {int} num
@@ -19,6 +20,16 @@ const URL = `${proxyserver}http://webservice.recruit.co.jp/hotpepper/gourmet/v1/
 const randomNumber = (num) => {
   return Math.floor(Math.random() * num + 1);
 }
+
+
+
+/**
+ * ページ上部へスクロールする
+ */
+ const scrollToTop = () => {
+  window.scroll({ top: 0, behavior: 'smooth' });
+}
+
 
 
 /**
@@ -83,7 +94,7 @@ export const fetchShopInfo = (element, rangeValue, smokingValue) => {
               </div>
               <div class="googleMap">
                 <iframe width="300" height="250"
-                  src="http://maps.google.co.jp/maps?output=embed&q=${shop.address}&;
+                  src="&#104;tt&#112;s&#58;&#47;&#47;//maps.google.co.jp/maps?output=embed&q=${shop.address}&;
                   t=m&;z=20"
                   frameborder="0"
                   scrolling="no"
@@ -105,7 +116,7 @@ export const fetchShopInfo = (element, rangeValue, smokingValue) => {
             <button class="searchButton js-search">再検索する</button>
           </p>
           <div class="linkParent">
-            <a href="/" class="link js-top">トップページに戻る</a>
+            <a href="/lunch-gotanda" class="link js-top">トップページに戻る</a>
           </div>
         </div>
       </main>
@@ -115,6 +126,7 @@ export const fetchShopInfo = (element, rangeValue, smokingValue) => {
       </footer>
       `;
       const searchButton = document.querySelector('.js-search');
+      searchButton.addEventListener('click', () => { scrollToTop() });
       searchButton.addEventListener('click', () => { fetchShopInfo(element, rangeValue, smokingValue) });
       const topLink = document.querySelector('.js-top');
       topLink.addEventListener('click', () => { renderTop(element) });
