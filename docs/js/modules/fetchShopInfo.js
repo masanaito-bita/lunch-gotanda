@@ -105,7 +105,7 @@ export const fetchShopInfo = (element, rangeValue, smokingValue) => {
             <button class="searchButton js-search">再検索する</button>
           </p>
           <div class="linkParent">
-            <a href="/" class="link js-top">トップページに戻る</a>
+            <a href="/lunch-gotanda" class="link js-top">トップページに戻る</a>
           </div>
         </div>
       </main>
