@@ -25,6 +25,7 @@
   "homepage": "https://github.com/masanaito-bita/lunch-gotanda#readme",
   "dependencies": {
     "axios": "^0.27.2",
+    "modules": "^0.4.0",
     "parcel-bundler": "^1.12.5",
     "stylelint": "^14.9.1",
     "stylelint-config-standard": "^26.0.0"
