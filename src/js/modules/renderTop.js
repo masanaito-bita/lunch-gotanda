@@ -11,7 +11,6 @@ export const renderTop = (element) => {
       <p>飲食店を提案します！</p>
     </div>
   </header>
-
   <main class="main">
     <div class="topWrapper">
       <p class="announce">条件を選んでください。</p>
@@ -42,14 +41,12 @@ export const renderTop = (element) => {
             </div>
           </button>
         </div>
-
         <p class="searchButtonParent">
           <button type="button" class="searchButton js-search">検索する</button>
         </p>
       </form>
     </div>
   </main>
-
   <footer class="footer">
     <div>Powered by <a class="creditLink" href="http://webservice.recruit.co.jp/">ホットペッパー Webサービス</a></div>
     <div>©bitA Inc. 2022</div>

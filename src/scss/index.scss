@@ -4,13 +4,20 @@ $color-accent: #F04820;
 $color-letter: #283890;
 
 .body {
+    background-color: $color-base;
     font-size: 62.5%;
     min-width: 400px;
 }
 
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 .main {
-    background-color: $color-base;
     text-align: center;
+    padding-bottom: 40px;
 }
 
 /* ----------------------------------------
@@ -197,12 +204,10 @@ $color-letter: #283890;
 .footer {
     display: flex;
     justify-content: space-around;
-    position: absolute;
-    bottom: 0;
     background-color: $color-letter;
     color: $color-base;
     width: 100%;
-    margin-top: 40px;
+    margin-top: auto;
     padding: 20px;
 }
 
