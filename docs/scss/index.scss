@@ -67,7 +67,7 @@ $color-letter: #283890;
 }
 
 .text02 {
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 .text03 {
@@ -132,14 +132,13 @@ $color-letter: #283890;
 .shopInfo__heading {
     padding: 30px 0 20px 0;
     text-align: left;
-    ;
 }
 
 .shopGenreCatch {
+    text-align: center;
     color: red;
     font-weight: bold;
     font-style: italic;
-    text-align: center;
 }
 
 .shopName {
