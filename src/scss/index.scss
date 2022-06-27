@@ -60,6 +60,10 @@ $color-letter: #283890;
         border-radius: 0 20px 20px 0;
         border-width: 5px 5px 5px 1px;
     }
+
+    &--disabled {
+        background-color: #CAA032;
+    }
 }
 
 .text02 {
