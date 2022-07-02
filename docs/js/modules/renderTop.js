@@ -72,6 +72,7 @@ export const renderTop = (element) => {
   searchButton.addEventListener('click', () => {
     const rangeValue = document.querySelector(".js-chosenRange").value;
     const smokingValue = document.querySelector(".js-chosenSmoking").value;
+
     fetchShopInfo(element, rangeValue, smokingValue);
   });
 }
